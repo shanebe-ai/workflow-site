@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Workflow, Automated | Shane Bennett</title>
+<meta name="description" content="Pick the chore that eats your week. I automate it with AI in two weeks, on your own accounts, for $2,500 flat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ee;
+    --surface: #ffffff;
+    --ink: #1c1f1d;
+    --quiet: #5b615d;
+    --line: #e3ddd2;
+    --accent: #1f5c46;
+    --accent-ink: #ffffff;
+    --accent-soft: #e4efe9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141715;
+      --surface: #1c201e;
+      --ink: #eef0ec;
+      --quiet: #a3aaa5;
+      --line: #2e3430;
+      --accent: #6fbf9b;
+      --accent-ink: #0f1a15;
+      --accent-soft: #1f2d27;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.6 Inter, system-ui, sans-serif;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 600; line-height: 1.15; margin: 0; }
+  h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); letter-spacing: -0.01em; }
+  h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 20px; }
+  h3 { font-size: 1.25rem; margin-bottom: 10px; }
+  p { margin: 0 0 14px; }
+  a { color: var(--accent); }
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+
+  header.top { padding: 22px 0; }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .name { font-weight: 600; }
+  .btn {
+    display: inline-block; background: var(--accent); color: var(--accent-ink);
+    padding: 14px 22px; border-radius: 10px; font-weight: 600; text-decoration: none;
+  }
+  .btn.small { padding: 9px 14px; font-size: 15px; }
+  .btn:hover { filter: brightness(1.08); }
+
+  .hero { padding: 48px 0 72px; border-top: none; }
+  .hero .lead { font-size: 1.2rem; color: var(--quiet); max-width: 620px; margin: 22px 0 30px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; padding: 0; list-style: none; }
+  .facts li { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 15px; }
+
+  .examples { display: grid; gap: 18px; }
+  @media (min-width: 760px) { .examples { grid-template-columns: repeat(3, 1fr); } }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+  .tag { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--quiet); display: block; margin-bottom: 4px; }
+  .after .tag { color: var(--accent); }
+  .after { background: var(--accent-soft); border-radius: 10px; padding: 12px 14px; margin-top: 12px; }
+  .after p, .before p { margin: 0; font-size: 16px; }
+
+  .two { display: grid; gap: 18px; }
+  @media (min-width: 760px) { .two { grid-template-columns: 1fr 1fr; } }
+  ul.list { margin: 0; padding-left: 20px; }
+  ul.list li { margin-bottom: 8px; }
+
+  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 12px; }
+  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; }
+  ol.steps li::before {
+    content: counter(s); width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent); font-weight: 600;
+    display: grid; place-items: center;
+  }
+  ol.steps strong { display: block; }
+
+  .price { font-family: Fraunces, Georgia, serif; font-size: 3rem; font-weight: 600; line-height: 1; }
+  .founding { border: 2px solid var(--accent); }
+
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 10px 0 0; color: var(--quiet); }
+
+  .cta { text-align: center; }
+  .cta p { color: var(--quiet); }
+  footer { padding: 28px 0 40px; color: var(--quiet); font-size: 15px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="name">Shane Bennett</span>
+    <a class="btn small" href="https://calendar.app.google/CxNvek78YZnGp8gbA">Book a call</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Pick the chore that eats your week. I'll automate it in two weeks.</h1>
+      <p class="lead">One workflow, built with AI on your own Google or Microsoft accounts. $2,500 flat. When I'm done, you own it.</p>
+      <a class="btn" href="https://calendar.app.google/CxNvek78YZnGp8gbA">Book a free 30 minute call</a>
+      <ul class="facts">
+        <li>Toronto and the GTA</li>
+        <li>Two weeks, start to finish</li>
+        <li>Flat price, no hourly billing</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="examples">
+    <div class="wrap">
+      <h2>What that looks like</h2>
+      <div class="examples">
+        <div class="card">
+          <h3>Inbox triage</h3>
+          <div class="before"><span class="tag">Before</span><p>First hour of every day goes to sorting email and writing the same five replies.</p></div>
+          <div class="after"><span class="tag">After</span><p>Your inbox shows up sorted, replies already drafted. You read, tweak, send.</p></div>
+        </div>
+        <div class="card">
+          <h3>Intake to CRM</h3>
+          <div class="before"><span class="tag">Before</span><p>A form comes in and someone copies it into the spreadsheet. Sometimes. Leads slip.</p></div>
+          <div class="after"><span class="tag">After</span><p>Every form lands in your CRM with a short summary and the next step flagged.</p></div>
+        </div>
+        <div class="card">
+          <h3>Quote drafting</h3>
+          <div class="before"><span class="tag">Before</span><p>Site visit's done, then you lose your evening writing up the quote.</p></div>
+          <div class="after"><span class="tag">After</span><p>Drop in your notes, get a draft quote back in your format. Check the numbers, send it.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="included">
+    <div class="wrap">
+      <h2>What you get</h2>
+      <div class="two">
+        <div class="card">
+          <h3>Included</h3>
+          <ul class="list">
+            <li>A 60 minute discovery call and a one page scope doc we both sign</li>
+            <li>One workflow, built and running end to end</li>
+            <li>Setup on Google Workspace or Microsoft 365, plus Zapier, Make or n8n if needed</li>
+            <li>A written runbook and a short walkthrough video</li>
+            <li>30 days of fixes after handoff</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Not included</h3>
+          <ul class="list">
+            <li>A second workflow (that's $1,500 once the first one is live)</li>
+            <li>Custom app development or data migration</li>
+            <li>Hosting on my servers. It runs on yours.</li>
+            <li>Health records or other regulated data</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <h2>How it goes</h2>
+      <ol class="steps">
+        <li><div><strong>Intro call (30 min, free)</strong>We figure out if there's a chore worth automating.</div></li>
+        <li><div><strong>Scope it (days 1 to 3)</strong>Scope doc signed, 50% deposit, I get access to the accounts I need.</div></li>
+        <li><div><strong>Build (week 1)</strong>I build it on your accounts.</div></li>
+        <li><div><strong>Run it for real (week 2)</strong>We use it on actual work and I fix whatever breaks.</div></li>
+        <li><div><strong>Handoff</strong>Runbook, walkthrough video, second half invoiced.</div></li>
+        <li><div><strong>30 days of support</strong>Anything goes sideways, I fix it.</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <h2>Price</h2>
+      <div class="two">
+        <div class="card">
+          <span class="tag">Standard</span>
+          <div class="price">$2,500</div>
+          <p style="margin-top:12px">CAD, flat. Half to book, half at handoff. Tool and AI costs go on your own accounts.</p>
+        </div>
+        <div class="card founding">
+          <span class="tag">First two clients</span>
+          <div class="price">$1,500</div>
+          <p style="margin-top:12px">Same package. In return I write it up as a case study (with your OK) and ask for a short testimonial.</p>
+        </div>
+      </div>
+      <p style="margin-top:18px;color:var(--quiet)">Want me to keep an eye on it after? There's an optional care plan at $250 a month: small tweaks, monitoring, one change a month.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>Who I am</h2>
+      <p>I'm Shane. I've been building software and running engineering teams for 15+ years. At Tenstorrent I led a team of 8 engineers shipping production AI (RAG pipelines, LLM deployment, model serving).</p>
+      <p>Now I'm doing the same kind of work for small businesses here in the GTA, just smaller and faster. If you want to see some of what I build, <a href="https://tmcdonald.ca:3002">LetsMCP</a> and <a href="http://37.27.80.77:3003">JobOS</a> are two proof of concept tools I wrote and run myself.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <details><summary>Who owns it when you're done?</summary><p>You do. It's built on your accounts, and you get the runbook so anyone can look after it.</p></details>
+      <details><summary>What tools do you use?</summary><p>Whatever you already have where possible: Google Workspace or Microsoft 365, plus Zapier, Make or n8n when it helps. AI usage gets billed to your own account.</p></details>
+      <details><summary>What if it doesn't work?</summary><p>It does what the scope doc says or I fix it. If I can't, you don't pay the second half.</p></details>
+      <details><summary>What happens to my data?</summary><p>It stays in your accounts. I don't take on health records or other regulated data.</p></details>
+      <details><summary>I don't know which chore to pick.</summary><p>That's what the free call is for. We walk through your week and the chore usually jumps out.</p></details>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Got a chore in mind?</h2>
+      <p>30 minutes, no charge. Worst case you leave with a better idea of what's worth automating.</p>
+      <a class="btn" href="https://calendar.app.google/CxNvek78YZnGp8gbA">Book a call</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Shane Bennett, Toronto. <a href="mailto:shanebe@gmail.com">shanebe@gmail.com</a></div>
+</footer>
+
+</body>
+</html>
