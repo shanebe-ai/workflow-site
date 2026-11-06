@@ -3,141 +3,229 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>One Workflow, Automated | Shane Bennett</title>
 <meta name="description" content="Pick the chore that eats your week. I automate it with AI in two weeks, on your own accounts, for $2,500 flat.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;112,800&family=Public+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f4ee;
-    --surface: #ffffff;
-    --ink: #1c1f1d;
-    --quiet: #5b615d;
-    --line: #e3ddd2;
-    --accent: #1f5c46;
-    --accent-ink: #ffffff;
-    --accent-soft: #e4efe9;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #141715;
-      --surface: #1c201e;
-      --ink: #eef0ec;
-      --quiet: #a3aaa5;
-      --line: #2e3430;
-      --accent: #6fbf9b;
-      --accent-ink: #0f1a15;
-      --accent-soft: #1f2d27;
-    }
+    --paper: #fbfbf8;
+    --sheet: #ffffff;
+    --ink: #18233a;
+    --quiet: #56607a;
+    --rule: #d9dfeb;
+    --blue: #2a55c9;
+    --blue-soft: #e8eefc;
+    --done: #18865a;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: var(--bg);
+    background: var(--paper);
     color: var(--ink);
-    font: 17px/1.6 Inter, system-ui, sans-serif;
+    font: 17px/1.6 "Public Sans", system-ui, sans-serif;
+    padding-bottom: 84px;
   }
-  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
-  h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 600; line-height: 1.15; margin: 0; }
-  h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); letter-spacing: -0.01em; }
-  h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 20px; }
-  h3 { font-size: 1.25rem; margin-bottom: 10px; }
+  @media (min-width: 760px) { body { padding-bottom: 0; } }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: Archivo, "Arial Narrow", sans-serif; font-stretch: 112%; font-weight: 800; line-height: 1.05; margin: 0; letter-spacing: -0.015em; }
+  h1 { font-size: clamp(2rem, 7.4vw, 4.2rem); }
+  h2 { font-size: clamp(1.7rem, 5vw, 2.5rem); margin-bottom: 22px; }
+  h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
   p { margin: 0 0 14px; }
-  a { color: var(--accent); }
-  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  a { color: var(--blue); }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  section { padding: 64px 0; }
+  section + section { border-top: 1px solid var(--rule); }
 
-  header.top { padding: 22px 0; }
-  header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-  .name { font-weight: 600; }
+  /* header */
+  header.top { padding: 18px 0; border-bottom: 1px solid var(--rule); background: var(--sheet); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .mark { font-family: Archivo, sans-serif; font-stretch: 112%; font-weight: 800; font-size: 1.15rem; text-decoration: none; color: var(--ink); }
+  .mark span { color: var(--blue); }
+
   .btn {
-    display: inline-block; background: var(--accent); color: var(--accent-ink);
-    padding: 14px 22px; border-radius: 10px; font-weight: 600; text-decoration: none;
+    display: inline-block; background: var(--blue); color: #fff;
+    padding: 15px 24px; border-radius: 8px; font-weight: 600; text-decoration: none;
+    box-shadow: 0 2px 0 #1b3c99;
   }
+  .btn:hover { background: #2349b3; }
   .btn.small { padding: 9px 14px; font-size: 15px; }
-  .btn:hover { filter: brightness(1.08); }
+  .hide-mobile { display: none; }
+  @media (min-width: 760px) { .hide-mobile { display: inline-block; } }
 
-  .hero { padding: 48px 0 72px; border-top: none; }
-  .hero .lead { font-size: 1.2rem; color: var(--quiet); max-width: 620px; margin: 22px 0 30px; }
-  .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; padding: 0; list-style: none; }
-  .facts li { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 15px; }
+  /* hero */
+  .hero { padding: 32px 0 64px; }
+  .hero .grid { display: grid; gap: 36px; align-items: center; }
+  @media (min-width: 860px) { .hero .grid { grid-template-columns: 1.05fr 0.95fr; } }
+  .hero .lead { font-size: 1.15rem; color: var(--quiet); max-width: 34ch; margin: 20px 0 26px; }
+  .me { display: flex; align-items: center; gap: 12px; margin-top: 22px; color: var(--quiet); font-size: 15px; }
+  .avatar {
+    width: 48px; height: 48px; border-radius: 50%; flex: none; object-fit: cover;
+    background: var(--blue-soft); border: 2px solid var(--sheet); box-shadow: 0 0 0 1px var(--rule);
+    display: grid; place-items: center; font-weight: 600; color: var(--blue);
+  }
 
-  .examples { display: grid; gap: 18px; }
-  @media (min-width: 760px) { .examples { grid-template-columns: repeat(3, 1fr); } }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
-  .tag { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--quiet); display: block; margin-bottom: 4px; }
-  .after .tag { color: var(--accent); }
-  .after { background: var(--accent-soft); border-radius: 10px; padding: 12px 14px; margin-top: 12px; }
-  .after p, .before p { margin: 0; font-size: 16px; }
+  /* the chore sheet */
+  .sheet {
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 20px 22px 14px;
+    box-shadow: 0 1px 0 var(--rule), 0 14px 30px -18px rgba(24, 35, 58, 0.35);
+    position: relative;
+    transform: rotate(-1deg);
+  }
+  .sheet-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 4px; }
+  .sheet-head strong { font-family: Archivo, sans-serif; font-stretch: 112%; font-size: 1.05rem; }
+  .sheet-head span { font-size: 14px; color: var(--quiet); }
+  .chores { list-style: none; margin: 0; padding: 0; }
+  .chores li {
+    display: flex; justify-content: space-between; gap: 12px;
+    border-bottom: 1px solid var(--rule); padding: 9px 0;
+    font-family: Caveat, cursive; font-size: 1.45rem; line-height: 1.2; color: #24366b;
+  }
+  .chores li .hrs { flex: none; }
+  .chores li.auto { position: relative; color: var(--quiet); }
+  .chores li.auto .txt { text-decoration: line-through; text-decoration-color: var(--done); text-decoration-thickness: 2px; }
+  .stamp {
+    position: absolute; right: 34px; top: 50%;
+    transform: translateY(-50%) rotate(-9deg);
+    font-family: Archivo, sans-serif; font-stretch: 112%; font-weight: 800; font-size: 15px;
+    color: var(--done); border: 2.5px solid var(--done); border-radius: 6px;
+    padding: 3px 10px; background: rgba(255, 255, 255, 0.85);
+    animation: stamp 0.45s cubic-bezier(.2,1.6,.5,1) 0.7s both;
+  }
+  @keyframes stamp {
+    from { opacity: 0; transform: translateY(-50%) rotate(-9deg) scale(1.8); }
+    to { opacity: 1; transform: translateY(-50%) rotate(-9deg) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) { .stamp { animation: none; } }
+  .sheet-foot { display: flex; justify-content: space-between; padding-top: 10px; font-size: 15px; }
+  .sheet-foot b { color: var(--done); }
 
-  .two { display: grid; gap: 18px; }
+  /* examples as a before / after table */
+  .rows { border-top: 2px solid var(--ink); }
+  .row { display: grid; gap: 10px; padding: 22px 0; border-bottom: 1px solid var(--rule); }
+  @media (min-width: 760px) { .row { grid-template-columns: 200px 1fr 1fr; gap: 28px; } }
+  .row .label { font-size: 14px; color: var(--quiet); display: block; margin-bottom: 2px; }
+  .row .after .label { color: var(--done); }
+  .row p { margin: 0; }
+  .row .after p { font-weight: 500; }
+
+  .two { display: grid; gap: 28px; }
   @media (min-width: 760px) { .two { grid-template-columns: 1fr 1fr; } }
-  ul.list { margin: 0; padding-left: 20px; }
-  ul.list li { margin-bottom: 8px; }
+  ul.list { margin: 0; padding: 0; list-style: none; }
+  ul.list li { padding: 10px 0 10px 30px; border-bottom: 1px solid var(--rule); position: relative; }
+  ul.list li::before { position: absolute; left: 2px; top: 10px; font-weight: 700; }
+  ul.yes li::before { content: "\2713"; color: var(--done); }
+  ul.no li::before { content: "\00d7"; color: var(--quiet); font-size: 1.2em; top: 7px; }
 
-  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 12px; }
-  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; }
+  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 0; }
+  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
   ol.steps li::before {
-    content: counter(s); width: 32px; height: 32px; border-radius: 50%;
-    background: var(--accent-soft); color: var(--accent); font-weight: 600;
-    display: grid; place-items: center;
+    content: counter(s); font-family: Archivo, sans-serif; font-stretch: 112%; font-weight: 800;
+    font-size: 1.6rem; color: var(--blue); line-height: 1;
   }
   ol.steps strong { display: block; }
 
-  .price { font-family: Fraunces, Georgia, serif; font-size: 3rem; font-weight: 600; line-height: 1; }
-  .founding { border: 2px solid var(--accent); }
+  .price-block { background: var(--sheet); border: 1px solid var(--rule); border-radius: 8px; padding: 24px; }
+  .price-block.founding { border: 2px solid var(--blue); background: var(--blue-soft); }
+  .price-block .who { font-size: 15px; color: var(--quiet); }
+  .price { font-family: Archivo, sans-serif; font-stretch: 112%; font-size: 3.2rem; font-weight: 800; line-height: 1; margin: 6px 0 12px; }
 
-  details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; }
-  summary { cursor: pointer; font-weight: 600; }
+  .about { display: grid; gap: 28px; align-items: start; }
+  @media (min-width: 860px) { .about { grid-template-columns: 1.1fr 1fr; align-items: center; } }
+  .portrait {
+    width: 100%; height: auto; display: block; border-radius: 8px; transform: rotate(1deg); box-shadow: 0 14px 30px -18px rgba(24, 35, 58, 0.45);
+    background: var(--blue-soft); display: grid; place-items: center; color: var(--blue); font-weight: 600;
+  }
+
+  details { border-bottom: 1px solid var(--rule); padding: 16px 0; }
+  details:first-of-type { border-top: 2px solid var(--ink); }
+  summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--blue); }
+  details[open] summary::after { content: "\2212"; }
   details p { margin: 10px 0 0; color: var(--quiet); }
 
-  .cta { text-align: center; }
-  .cta p { color: var(--quiet); }
-  footer { padding: 28px 0 40px; color: var(--quiet); font-size: 15px; border-top: 1px solid var(--line); }
+  .cta { background: var(--ink); color: #fff; text-align: left; }
+  .cta h2 { color: #fff; }
+  .cta p { color: #c9d1e4; max-width: 46ch; }
+  .cta .btn { background: #fff; color: var(--ink); box-shadow: none; }
+
+  footer { padding: 26px 0; color: var(--quiet); font-size: 15px; }
+
+  /* sticky mobile bar */
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.96); border-top: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .bar .btn { flex: 1; text-align: center; }
+  .bar { transform: translateY(110%); transition: transform 0.25s ease; }
+  .bar.show { transform: none; }
+  @media (prefers-reduced-motion: reduce) { .bar { transition: none; } }
+  @media (min-width: 760px) { .bar { display: none; } }
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <span class="name">Shane Bennett</span>
-    <a class="btn small" href="https://calendar.app.google/CxNvek78YZnGp8gbA">Book a call</a>
+    <a class="mark" href="#">workflow<span>setup</span></a>
+    <a class="btn small hide-mobile" href="https://calendar.app.google/CxNvek78YZnGp8gbA">Book a call</a>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <div class="wrap">
-      <h1>Pick the chore that eats your week. I'll automate it in two weeks.</h1>
-      <p class="lead">One workflow, built with AI on your own Google or Microsoft accounts. $2,500 flat. When I'm done, you own it.</p>
-      <a class="btn" href="https://calendar.app.google/CxNvek78YZnGp8gbA">Book a free 30 minute call</a>
-      <ul class="facts">
-        <li>Toronto and the GTA</li>
-        <li>Two weeks, start to finish</li>
-        <li>Flat price, no hourly billing</li>
-      </ul>
+    <div class="wrap grid">
+      <div>
+        <h1>Pick the chore that eats your week. I'll automate it in two weeks.</h1>
+        <p class="lead">One workflow, built with AI on your own Google or Microsoft accounts. $2,500 flat. When I'm done, you own it.</p>
+        <a class="btn" id="hero-btn" href="https://calendar.app.google/CxNvek78YZnGp8gbA">Book a free 30 minute call</a>
+        <div class="me">
+          <img class="avatar" src="shane-sm.jpg" width="48" height="48" alt="Shane Bennett">
+          <span>You talk to me, Shane. No sales team. Toronto and the GTA.</span>
+        </div>
+      </div>
+
+      <div class="sheet" aria-label="Example: a week of admin chores, with one automated">
+        <div class="sheet-head"><strong>This week's chores</strong><span>hrs</span></div>
+        <ul class="chores">
+          <li><span class="txt">Answer the same 5 emails</span><span class="hrs">3</span></li>
+          <li class="auto"><span class="txt">Copy forms into the sheet</span><span class="hrs">4</span><span class="stamp">Automated</span></li>
+          <li><span class="txt">Write up quotes after visits</span><span class="hrs">5</span></li>
+          <li><span class="txt">Chase invoices</span><span class="hrs">2</span></li>
+        </ul>
+        <div class="sheet-foot"><span>Back in your week</span><b>4 hrs</b></div>
+      </div>
     </div>
   </section>
 
   <section id="examples">
     <div class="wrap">
       <h2>What that looks like</h2>
-      <div class="examples">
-        <div class="card">
+      <div class="rows">
+        <div class="row">
           <h3>Inbox triage</h3>
-          <div class="before"><span class="tag">Before</span><p>First hour of every day goes to sorting email and writing the same five replies.</p></div>
-          <div class="after"><span class="tag">After</span><p>Your inbox shows up sorted, replies already drafted. You read, tweak, send.</p></div>
+          <div class="before"><span class="label">Before</span><p>First hour of every day goes to sorting email and writing the same five replies.</p></div>
+          <div class="after"><span class="label">After</span><p>Your inbox shows up sorted, replies already drafted. You read, tweak, send.</p></div>
         </div>
-        <div class="card">
+        <div class="row">
           <h3>Intake to CRM</h3>
-          <div class="before"><span class="tag">Before</span><p>A form comes in and someone copies it into the spreadsheet. Sometimes. Leads slip.</p></div>
-          <div class="after"><span class="tag">After</span><p>Every form lands in your CRM with a short summary and the next step flagged.</p></div>
+          <div class="before"><span class="label">Before</span><p>A form comes in and someone copies it into the spreadsheet. Sometimes. Leads slip.</p></div>
+          <div class="after"><span class="label">After</span><p>Every form lands in your CRM with a short summary and the next step flagged.</p></div>
         </div>
-        <div class="card">
+        <div class="row">
           <h3>Quote drafting</h3>
-          <div class="before"><span class="tag">Before</span><p>Site visit's done, then you lose your evening writing up the quote.</p></div>
-          <div class="after"><span class="tag">After</span><p>Drop in your notes, get a draft quote back in your format. Check the numbers, send it.</p></div>
+          <div class="before"><span class="label">Before</span><p>Site visit's done, then you lose your evening writing up the quote.</p></div>
+          <div class="after"><span class="label">After</span><p>Drop in your notes, get a draft quote back in your format. Check the numbers, send it.</p></div>
         </div>
       </div>
     </div>
@@ -147,9 +235,9 @@
     <div class="wrap">
       <h2>What you get</h2>
       <div class="two">
-        <div class="card">
+        <div>
           <h3>Included</h3>
-          <ul class="list">
+          <ul class="list yes">
             <li>A 60 minute discovery call and a one page scope doc we both sign</li>
             <li>One workflow, built and running end to end</li>
             <li>Setup on Google Workspace or Microsoft 365, plus Zapier, Make or n8n if needed</li>
@@ -157,9 +245,9 @@
             <li>30 days of fixes after handoff</li>
           </ul>
         </div>
-        <div class="card">
+        <div>
           <h3>Not included</h3>
-          <ul class="list">
+          <ul class="list no">
             <li>A second workflow (that's $1,500 once the first one is live)</li>
             <li>Custom app development or data migration</li>
             <li>Hosting on my servers. It runs on yours.</li>
@@ -188,26 +276,29 @@
     <div class="wrap">
       <h2>Price</h2>
       <div class="two">
-        <div class="card">
-          <span class="tag">Standard</span>
+        <div class="price-block">
+          <span class="who">Standard</span>
           <div class="price">$2,500</div>
-          <p style="margin-top:12px">CAD, flat. Half to book, half at handoff. Tool and AI costs go on your own accounts.</p>
+          <p>CAD, flat. Half to book, half at handoff. Tool and AI costs go on your own accounts.</p>
         </div>
-        <div class="card founding">
-          <span class="tag">First two clients</span>
+        <div class="price-block founding">
+          <span class="who">First two clients</span>
           <div class="price">$1,500</div>
-          <p style="margin-top:12px">Same package. In return I write it up as a case study (with your OK) and ask for a short testimonial.</p>
+          <p>Same package. In return I write it up as a case study (with your OK) and ask for a short testimonial.</p>
         </div>
       </div>
-      <p style="margin-top:18px;color:var(--quiet)">Want me to keep an eye on it after? There's an optional care plan at $250 a month: small tweaks, monitoring, one change a month.</p>
+      <p style="margin-top:20px;color:var(--quiet)">Want me to keep an eye on it after? There's an optional care plan at $250 a month: small tweaks, monitoring, one change a month.</p>
     </div>
   </section>
 
   <section id="about">
-    <div class="wrap">
-      <h2>Who I am</h2>
-      <p>I'm Shane. I've been building software and running engineering teams for 15+ years. At Tenstorrent I led a team of 8 engineers shipping production AI (RAG pipelines, LLM deployment, model serving).</p>
-      <p>Now I'm doing the same kind of work for small businesses here in the GTA, just smaller and faster. If you want to see some of what I build, <a href="https://tmcdonald.ca:3002">LetsMCP</a> and <a href="http://37.27.80.77:3003">JobOS</a> are two proof of concept tools I wrote and run myself.</p>
+    <div class="wrap about">
+      <img class="portrait" src="shane-wide.jpg" width="1000" height="558" alt="Shane Bennett grinning while friends point at him" loading="lazy">
+      <div>
+        <h2>Who I am</h2>
+        <p>I'm Shane. I've been building software and running engineering teams for 15+ years. At Tenstorrent I led a team of 8 engineers shipping production AI (RAG pipelines, LLM deployment, model serving).</p>
+        <p>Now I'm doing the same kind of work for small businesses here in the GTA, just smaller and faster. If you want to see some of what I build, <a href="https://tmcdonald.ca:3002">LetsMCP</a> and <a href="http://37.27.80.77:3003">JobOS</a> are two proof of concept tools I wrote and run myself.</p>
+      </div>
     </div>
   </section>
 
@@ -235,5 +326,18 @@
   <div class="wrap">Shane Bennett, Toronto. <a href="mailto:shanebe@gmail.com">shanebe@gmail.com</a></div>
 </footer>
 
+<div class="bar">
+  <a class="btn" href="https://calendar.app.google/CxNvek78YZnGp8gbA">Book a free call</a>
+</div>
+
+<script>
+  (function () {
+    var bar = document.querySelector('.bar'), btn = document.getElementById('hero-btn');
+    if (!('IntersectionObserver' in window)) { bar.classList.add('show'); return; }
+    new IntersectionObserver(function (e) {
+      bar.classList.toggle('show', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+    }).observe(btn);
+  })();
+</script>
 </body>
 </html>
